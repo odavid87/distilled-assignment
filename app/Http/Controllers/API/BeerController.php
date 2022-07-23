@@ -8,6 +8,11 @@ use App\Models\Beer;
 
 class BeerController extends Controller
 {
+    public function index()
+    {
+        return response()->json(Beer::all());
+    }
+
     public function random()
     {
         $randomBeer = Beer::inRandomOrder()->limit(1)->first();

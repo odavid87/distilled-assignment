@@ -19,3 +19,6 @@ use Webklex\IMAP\Facades\Client;
 Route::get('/', function(){
     return view('home');
 });
+Route::get('/beers', function(){
+    return view('beers-grid');
+});

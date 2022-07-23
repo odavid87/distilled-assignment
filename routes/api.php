@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/beer', [BeerController::class, 'index']);
 Route::get('/beer/random', [BeerController::class, 'random']);
