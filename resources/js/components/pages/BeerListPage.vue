@@ -20,6 +20,26 @@
                     </v-card-text>
                 </v-card>
                 <beer-grid></beer-grid>
+                <v-btn
+                    color="primary"
+                    fab
+                    small
+                    dark
+                    :disabled="!beerPages.prev_page_url"
+                    @click="prevPage"
+                >
+                    <
+                </v-btn>
+                <v-btn
+                    color="primary"
+                    fab
+                    small
+                    dark
+                    :disabled="!beerPages.next_page_url"
+                    @click="nextPage"
+                >
+                    >
+                </v-btn>
             </v-container>
         </v-main>
         <general-feedback></general-feedback>
@@ -27,11 +47,17 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
-    components: {},
+    computed: {
+        ...mapState('beerStore', ['beerPages'])
+    },
     methods: {
-        loadBeers() {
-            this.$store.dispatch('beerStore/loadBeers');
+        nextPage() { this.loadBeers({next: 1});},
+        prevPage() { this.loadBeers({prev: 1});},
+        loadBeers(page = {}) {
+            this.$store.dispatch('beerStore/loadBeers', page);
         },
         goToRandomPage(){
             location.href='/';

@@ -10,7 +10,7 @@ class BeerController extends Controller
 {
     public function index()
     {
-        return response()->json(Beer::all());
+        return response()->json(Beer::paginate(5));
     }
 
     public function random()
