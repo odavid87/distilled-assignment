@@ -18,8 +18,3 @@ help: ## This help message
 bash: ## Bash in webserver container
 	docker-compose exec webserver /bin/bash
 
-start-worker: ## Starts the queue worker process
-	docker-compose exec -T webserver /bin/bash -c "php artisan queue:work --queue distilled"
-
-run-scheduler: ## Runs php artisan schedule:run
-	docker-compose exec -T webserver /bin/bash -c "php artisan schedule:run"
